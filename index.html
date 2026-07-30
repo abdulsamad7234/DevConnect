@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DevConnect – Developer Portfolio Hub. Showcase projects, skills, and social profiles powered by GitHub.">
+  <title>DevConnect – Developer Portfolio Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Navigation -->
+  <header class="header" id="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a href="#hero" class="nav__logo">
+        <span class="nav__logo-icon">&lt;/&gt;</span>
+        DevConnect
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#hero" class="nav__link active">Home</a></li>
+        <li><a href="#about" class="nav__link">About</a></li>
+        <li><a href="#projects" class="nav__link">Projects</a></li>
+        <li><a href="#skills" class="nav__link">Skills</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero section" id="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__badge">Developer Portfolio Hub</p>
+          <h1 class="hero__title">
+            Connect. Build. <span class="gradient-text">Showcase.</span>
+          </h1>
+          <p class="hero__subtitle">
+            Enter any GitHub username to instantly generate a beautiful developer portfolio with live repos, stats, and social links.
+          </p>
+
+          <form class="search-form" id="searchForm" role="search">
+            <div class="search-form__group">
+              <svg class="search-form__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              <input
+                type="text"
+                id="usernameInput"
+                class="search-form__input"
+                placeholder="GitHub username (e.g. torvalds)"
+                autocomplete="off"
+                spellcheck="false"
+                required
+                aria-label="GitHub username"
+              >
+              <button type="submit" class="btn btn--primary" id="searchBtn">
+                <span class="btn__text">Load Profile</span>
+                <span class="btn__loader" hidden></span>
+              </button>
+            </div>
+            <p class="search-form__hint">Try: <button type="button" class="link-btn" data-username="octocat">octocat</button>, <button type="button" class="link-btn" data-username="gaearon">gaearon</button>, or your own username</p>
+          </form>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="code-window">
+            <div class="code-window__bar">
+              <span class="code-window__dot code-window__dot--red"></span>
+              <span class="code-window__dot code-window__dot--yellow"></span>
+              <span class="code-window__dot code-window__dot--green"></span>
+            </div>
+            <pre class="code-window__code"><code><span class="code-kw">const</span> dev = {
+  <span class="code-prop">name</span>: <span class="code-str">"Your Name"</span>,
+  <span class="code-prop">skills</span>: [<span class="code-str">"JS"</span>, <span class="code-str">"React"</span>, <span class="code-str">"Node"</span>],
+  <span class="code-prop">passion</span>: <span class="code-str">"Building things"</span>
+};</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile / About -->
+    <section class="profile section" id="about" hidden>
+      <div class="container">
+        <div class="profile__card" id="profileCard">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Repositories fetched live from the GitHub REST API</p>
+        </div>
+        <div class="projects__grid" id="projectsGrid">
+          <div class="empty-state" id="projectsEmpty">
+            <div class="empty-state__icon">📦</div>
+            <h3>No projects loaded yet</h3>
+            <p>Enter a GitHub username above to see their repositories here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Tech Stack</h2>
+          <p class="section-subtitle">Languages and tools detected from GitHub repositories</p>
+        </div>
+        <div class="skills__grid" id="skillsGrid">
+          <div class="empty-state empty-state--compact" id="skillsEmpty">
+            <p>Skills will appear after loading a profile.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Social -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Connect</h2>
+          <p class="section-subtitle">Social profiles and links from the developer's GitHub</p>
+        </div>
+        <div class="contact__links" id="contactLinks">
+          <div class="empty-state empty-state--compact" id="contactEmpty">
+            <p>Social links will appear after loading a profile.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast notifications -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>&copy; 2026 DevConnect. Built with HTML, CSS &amp; JavaScript.</p>
+      <p class="footer__credit">Data powered by <a href="https://docs.github.com/en/rest" target="_blank" rel="noopener noreferrer">GitHub REST API</a></p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
