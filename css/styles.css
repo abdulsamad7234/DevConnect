@@ -1,9 +1,7 @@
-/* ============================================
-   DevConnect – Developer Portfolio Hub
-   Mobile-first responsive styles
-   ============================================ */
+/* DevConnect styles
+   dark/light theme variables + layout */
 
-/* --- CSS Custom Properties (Theming) --- */
+/* theme colors */
 :root {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
@@ -1001,7 +999,7 @@ ul {
   font-weight: 500;
 }
 
-/* --- Reduced Motion --- */
+/* animations off if user has reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

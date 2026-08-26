@@ -1,7 +1,5 @@
-/**
- * GitHub REST API module
- * Fetches user profile and repositories from GitHub's public API
- */
+// github-api.js
+// functions to call github api and process the response
 
 const GITHUB_API_BASE = 'https://api.github.com';
 
@@ -22,9 +20,9 @@ async function fetchJSON(url) {
 
   if (!response.ok) {
     const messages = {
-      404: 'GitHub user not found. Please check the username and try again.',
-      403: 'API rate limit exceeded. Please wait a few minutes and try again.',
-      422: 'Invalid username format.',
+      404: 'User not found. Check the username and try again.',
+      403: 'API limit reached. Wait some time and try again.',
+      422: 'Invalid username.',
     };
     throw new GitHubAPIError(
       messages[response.status] || `GitHub API error (${response.status})`,
@@ -35,26 +33,17 @@ async function fetchJSON(url) {
   return response.json();
 }
 
-/**
- * Fetch GitHub user profile
- * @param {string} username
- * @returns {Promise<Object>}
- */
+// get user profile
 export async function fetchUserProfile(username) {
   const trimmed = username.trim().toLowerCase();
   if (!trimmed || !/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i.test(trimmed)) {
-    throw new GitHubAPIError('Please enter a valid GitHub username.', 422);
+    throw new GitHubAPIError('Enter a valid GitHub username.', 422);
   }
 
   return fetchJSON(`${GITHUB_API_BASE}/users/${encodeURIComponent(trimmed)}`);
 }
 
-/**
- * Fetch user's public repositories sorted by last updated
- * @param {string} username
- * @param {number} limit
- * @returns {Promise<Array>}
- */
+// get public repos (latest updated first)
 export async function fetchUserRepos(username, limit = 9) {
   const trimmed = username.trim().toLowerCase();
   const repos = await fetchJSON(
@@ -64,11 +53,7 @@ export async function fetchUserRepos(username, limit = 9) {
   return repos.filter((repo) => !repo.fork);
 }
 
-/**
- * Extract language stats from repositories
- * @param {Array} repos
- * @returns {Array<{name: string, count: number, color: string}>}
- */
+// count languages from repo list for skills section
 export function extractLanguages(repos) {
   const langColors = {
     JavaScript: '#f7df1e',
@@ -106,11 +91,7 @@ export function extractLanguages(repos) {
     .sort((a, b) => b.count - a.count);
 }
 
-/**
- * Build social/contact links from user profile
- * @param {Object} user
- * @returns {Array<{label: string, url: string, icon: string}>}
- */
+// make contact links from profile fields
 export function buildSocialLinks(user) {
   const links = [];
 

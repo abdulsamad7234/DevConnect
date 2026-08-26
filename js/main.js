@@ -1,7 +1,5 @@
-/**
- * DevConnect – Main Application Entry Point
- * Orchestrates GitHub API calls, UI rendering, and app initialization
- */
+// main.js - starting point
+// loads theme, navbar and search form, then fetches github data
 
 import {
   fetchUserProfile,
@@ -43,16 +41,16 @@ async function loadDeveloperProfile(username) {
 
     showToast(`Loaded profile for @${user.login}`, 'success');
 
-    // Smooth scroll to profile section
+    // scroll to about section after load
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    // Persist last searched username
+    // save last username so it loads again on refresh
     localStorage.setItem('devconnect-last-user', user.login);
   } catch (error) {
     if (error instanceof GitHubAPIError) {
       showToast(error.message, 'error');
     } else if (error instanceof TypeError) {
-      showToast('Network error. Please check your connection and try again.', 'error');
+      showToast('Network error. Check your internet connection.', 'error');
     } else {
       showToast('Something went wrong. Please try again.', 'error');
     }
@@ -72,7 +70,7 @@ function initSearchForm() {
     if (username) loadDeveloperProfile(username);
   });
 
-  // Quick-fill demo usernames
+  // clickable usernames under the search box
   document.querySelectorAll('[data-username]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const username = btn.getAttribute('data-username');
@@ -89,12 +87,11 @@ function initApp() {
   initNavigation();
   initSearchForm();
 
-  // Auto-load demo profile or last searched user
+  // load last searched user, otherwise octocat
   const lastUser = localStorage.getItem('devconnect-last-user') || DEFAULT_USERNAME;
   const input = document.getElementById('usernameInput');
   if (input) input.value = lastUser;
 
-  // Delay initial load slightly for smoother first paint
   requestAnimationFrame(() => loadDeveloperProfile(lastUser));
 }
 

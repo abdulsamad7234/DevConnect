@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="DevConnect – Developer Portfolio Hub. Showcase projects, skills, and social profiles powered by GitHub.">
-  <title>DevConnect – Developer Portfolio Hub</title>
+  <meta name="description" content="DevConnect - load a GitHub profile and see repos, skills and social links.">
+  <title>DevConnect | GitHub Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -47,12 +47,12 @@
     <section class="hero section" id="hero">
       <div class="container hero__inner">
         <div class="hero__content">
-          <p class="hero__badge">Developer Portfolio Hub</p>
+          <p class="hero__badge">Mini Project</p>
           <h1 class="hero__title">
-            Connect. Build. <span class="gradient-text">Showcase.</span>
+            DevConnect – <span class="gradient-text">GitHub Portfolio</span>
           </h1>
           <p class="hero__subtitle">
-            Enter any GitHub username to instantly generate a beautiful developer portfolio with live repos, stats, and social links.
+            Enter a GitHub username to fetch profile, repositories and skills using GitHub API.
           </p>
 
           <form class="search-form" id="searchForm" role="search">
@@ -73,7 +73,7 @@
                 <span class="btn__loader" hidden></span>
               </button>
             </div>
-            <p class="search-form__hint">Try: <button type="button" class="link-btn" data-username="octocat">octocat</button>, <button type="button" class="link-btn" data-username="gaearon">gaearon</button>, or your own username</p>
+            <p class="search-form__hint">Try: <button type="button" class="link-btn" data-username="octocat">octocat</button> or <button type="button" class="link-btn" data-username="gaearon">gaearon</button></p>
           </form>
         </div>
 
@@ -84,10 +84,10 @@
               <span class="code-window__dot code-window__dot--yellow"></span>
               <span class="code-window__dot code-window__dot--green"></span>
             </div>
-            <pre class="code-window__code"><code><span class="code-kw">const</span> dev = {
+            <pre class="code-window__code"><code><span class="code-kw">const</span> user = {
   <span class="code-prop">name</span>: <span class="code-str">"Your Name"</span>,
-  <span class="code-prop">skills</span>: [<span class="code-str">"JS"</span>, <span class="code-str">"React"</span>, <span class="code-str">"Node"</span>],
-  <span class="code-prop">passion</span>: <span class="code-str">"Building things"</span>
+  <span class="code-prop">skills</span>: [<span class="code-str">"HTML"</span>, <span class="code-str">"CSS"</span>, <span class="code-str">"JS"</span>],
+  <span class="code-prop">project</span>: <span class="code-str">"DevConnect"</span>
 };</code></pre>
           </div>
         </div>
@@ -107,14 +107,14 @@
     <section class="projects section" id="projects">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Featured Projects</h2>
-          <p class="section-subtitle">Repositories fetched live from the GitHub REST API</p>
+          <h2 class="section-title">Projects</h2>
+          <p class="section-subtitle">Public repositories fetched from GitHub API</p>
         </div>
         <div class="projects__grid" id="projectsGrid">
           <div class="empty-state" id="projectsEmpty">
             <div class="empty-state__icon">📦</div>
-            <h3>No projects loaded yet</h3>
-            <p>Enter a GitHub username above to see their repositories here.</p>
+            <h3>No projects yet</h3>
+            <p>Enter a GitHub username to load repositories.</p>
           </div>
         </div>
       </div>
@@ -124,12 +124,12 @@
     <section class="skills section" id="skills">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Tech Stack</h2>
-          <p class="section-subtitle">Languages and tools detected from GitHub repositories</p>
+          <h2 class="section-title">Skills</h2>
+          <p class="section-subtitle">Languages detected from the user's repositories</p>
         </div>
         <div class="skills__grid" id="skillsGrid">
           <div class="empty-state empty-state--compact" id="skillsEmpty">
-            <p>Skills will appear after loading a profile.</p>
+            <p>Skills will show after you load a profile.</p>
           </div>
         </div>
       </div>
@@ -139,12 +139,12 @@
     <section class="contact section" id="contact">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Connect</h2>
-          <p class="section-subtitle">Social profiles and links from the developer's GitHub</p>
+          <h2 class="section-title">Contact</h2>
+          <p class="section-subtitle">Links taken from the GitHub profile</p>
         </div>
         <div class="contact__links" id="contactLinks">
           <div class="empty-state empty-state--compact" id="contactEmpty">
-            <p>Social links will appear after loading a profile.</p>
+            <p>Social links will show after you load a profile.</p>
           </div>
         </div>
       </div>
@@ -156,8 +156,8 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <p>&copy; 2026 DevConnect. Built with HTML, CSS &amp; JavaScript.</p>
-      <p class="footer__credit">Data powered by <a href="https://docs.github.com/en/rest" target="_blank" rel="noopener noreferrer">GitHub REST API</a></p>
+      <p>&copy; 2026 DevConnect. Made with HTML, CSS and JavaScript.</p>
+      <p class="footer__credit">Uses <a href="https://docs.github.com/en/rest" target="_blank" rel="noopener noreferrer">GitHub REST API</a></p>
     </div>
   </footer>
 

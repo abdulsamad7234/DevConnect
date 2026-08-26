@@ -1,6 +1,5 @@
-/**
- * Theme toggle – dark/light mode with localStorage persistence
- */
+// theme.js - dark / light mode
+// stores selected theme in localStorage
 
 const STORAGE_KEY = 'devconnect-theme';
 

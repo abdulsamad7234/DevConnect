@@ -1,6 +1,4 @@
-/**
- * Navigation – mobile menu, active link highlighting, scroll spy, header shadow
- */
+// navigation.js - hamburger menu and active nav link on scroll
 
 export function initNavigation() {
   const header = document.getElementById('header');
@@ -8,7 +6,7 @@ export function initNavigation() {
   const navLinks = document.getElementById('navLinks');
   const links = document.querySelectorAll('.nav__link');
 
-  // Mobile menu toggle
+  // open/close mobile menu
   navToggle?.addEventListener('click', () => {
     const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', String(!isOpen));
@@ -16,7 +14,7 @@ export function initNavigation() {
     document.body.style.overflow = !isOpen ? 'hidden' : '';
   });
 
-  // Close mobile menu on link click
+  // close menu when a link is clicked
   links.forEach((link) => {
     link.addEventListener('click', () => {
       navToggle?.setAttribute('aria-expanded', 'false');
@@ -25,14 +23,14 @@ export function initNavigation() {
     });
   });
 
-  // Header shadow on scroll
+  // add shadow to header after scrolling
   const onScroll = () => {
     header?.classList.toggle('header--scrolled', window.scrollY > 20);
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Scroll spy – highlight active nav link
+  // highlight current section in navbar
   const sections = document.querySelectorAll('section[id]');
   const observer = new IntersectionObserver(
     (entries) => {
